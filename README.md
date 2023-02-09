@@ -7,7 +7,7 @@ This repo contains the code and models for the audio CRNN "student" network used
 - Download TragicTalkers from https://cvssp.org/data/TragicTalkers/ (username and password are required, check the license information on the website and contact d.berghi@surrey.ac.uk or davide.berghi@gmail.com to request the credentials)
 
 - Unzip the audio data in the `./data/TragicTalkers/` folder to get the following directory structure:
-
+<pre>
 	.
 	└── data
 	    ├── csv
@@ -17,7 +17,7 @@ This repo contains the code and models for the audio CRNN "student" network used
 		    ├── development
 		    ├── README.txt
 		    └── test
-
+</pre>
 
 ## Dependencies
 
@@ -32,7 +32,7 @@ Choose the desired supervisory condition (line 11). Default is 'GT_GT' (fully su
 There are 4 bash files (`0_make_hdf5.sh`, `1_train.sh`, `2_forward.sh`, `3_evaluation.sh`). Each allows setting the input argument "INFO". Choose a consistent string argument across the 4 scripts. It is used in the naming convention of the outputs and can be useful to personalize your experiments.
 
 
-## 0) EXTRACT INPUT FEATURES 
+## 0 - EXTRACT INPUT FEATURES 
 
 The network takes in input pre-extracted features from the multichannel audio. The code extracts the features from the development set and stores them in HDF5 binary format (`development_dataset.h5`) using the h5py module. 
 Then it computes the mean and standard deviation vectors that will be used to normalize the input features before training (`feature_scaler.h5`).
@@ -49,7 +49,7 @@ Create h5py dataset (~44GB) by running:
 This will create the `development_dataset.h5` and `feature_scaler.h5` files and store them in `[h5py_path]/h5py_[INFO]/`
 
 
-## 1) TRAINING
+## 1 - TRAINING
 
 By default the boolean argument `TRAINWITHFOLDS` in `1_train.sh` is set to false. This training uses the entire development set to train the CRNN. 
 Setting `TRAINWITHFOLDS=true` will produce a 5-fold cross-validation training and save the training and validation loss vectors in `./output/training_plots/[INFO]/`
@@ -63,7 +63,7 @@ Start training by running:
 The model's weights will be saved in the checkpoint folder `./ckpt/[INFO]/[LR]/`
 
 
-## 2) FORWARD TEST SET
+## 2 - FORWARD TEST SET
 
 Forward pass the test set using the trained model. Run:
 
@@ -72,7 +72,7 @@ Forward pass the test set using the trained model. Run:
 This will create a `test_forward.csv` file in `./output/forward/[INFO]/[LR]/`
 
 
-## 3) EVALUATION
+## 3 - EVALUATION
 
 By default the argument `TOLERANCE` in `3_evaluation.sh` is set to 89 pixels, i.e. 2 degrees along the azimuth. Use 222 pixels to use 5 degrees.
 Set `PLOTBOOL=true` to plot the precision-recall curve.
