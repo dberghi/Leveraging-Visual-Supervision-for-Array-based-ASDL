@@ -44,7 +44,7 @@ Default feature is GCC-PHAT. To use SALSA-Lite:
 
 Create h5py dataset (~44GB) by running:
  
-	`./0_make_h5py.sh`
+	./0_make_h5py.sh
 
 This will create the `development_dataset.h5` and `feature_scaler.h5` files and store them in `[h5py_path]/h5py_[INFO]/`
 
@@ -58,7 +58,7 @@ This procedure is only used to find suitable training meta-parameters. The defau
 
 Start training by running:
 
-	`./1_train.sh`
+	./1_train.sh
 
 The model's weights will be saved in the checkpoint folder `./ckpt/[INFO]/[LR]/`
 
@@ -67,7 +67,7 @@ The model's weights will be saved in the checkpoint folder `./ckpt/[INFO]/[LR]/`
 
 Forward pass the test set using the trained model. Run:
 
-	`./2_forward.sh`
+	./2_forward.sh
 
 This will create a `test_forward.csv` file in `./output/forward/[INFO]/[LR]/`
 
@@ -78,7 +78,7 @@ By default the argument `TOLERANCE` in `3_evaluation.sh` is set to 89 pixels, i.
 Set `PLOTBOOL=true` to plot the precision-recall curve.
 Run:
 	
-	`./3_evaluation.sh`
+	./3_evaluation.sh
 
 This will print the average distance (aD), the detection error (det err), the average precision (AP), and the F1 score (F1). 
 A precision-recall "matrix" with the values of precision and recall achieved for each Sigmoid-sampled confidence point will be saved in a `precision_recall_[TOLERANCE]_sigmoid.csv` file.
