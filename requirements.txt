@@ -1,0 +1,11 @@
+torch>=1.12.1
+numpy
+soundfile
+librosa
+h5py
+scipy
+tqdm
+opencv-python
+ffmpeg
+matplotlib
+
