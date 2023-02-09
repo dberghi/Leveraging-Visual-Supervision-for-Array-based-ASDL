@@ -21,7 +21,7 @@ This repo contains the code and models for the audio CRNN "student" network used
 
 ## Dependencies
 
-Install dependencies by running pip install -r utils/requirements.txt . Or manually install the modules in utils/requirements.txt
+Install dependencies by running 'pip install -r utils/requirements.txt'. Or manually install the modules in utils/requirements.txt
 
 
 ## Get started
