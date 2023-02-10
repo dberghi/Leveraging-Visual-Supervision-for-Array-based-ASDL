@@ -51,16 +51,15 @@ This will create the `development_dataset.h5` and `feature_scaler.h5` files and 
 
 ## 1 - TRAINING
 
-By default the boolean argument `TRAINWITHFOLDS` in `1_train.sh` is set to false. This training uses the entire development set to train the CRNN. 
-Setting `TRAINWITHFOLDS=true` will produce a 5-fold cross-validation training and save the training and validation loss vectors in `./output/training_plots/[INFO]/`
-Then the losses are averaged across the 5 folds. A log file and a plot with the results will be saved in `./output/training_plots/[INFO]/`.
-This procedure is only used to find suitable training meta-parameters. The default settings should work fine.
-
 Start training by running:
 
 	./1_train.sh
 
-The model's weights will be saved in the checkpoint folder `./ckpt/[INFO]/[LR]/`
+The model's weights will be saved in the checkpoint folder `./ckpt/[INFO]/[LR]/`.
+By default the boolean argument `TRAINWITHFOLDS` in `1_train.sh` is set to false. This training uses the entire development set to train the CRNN. 
+Setting `TRAINWITHFOLDS=true` will start a 5-fold cross-validation training and save the training and validation loss vectors in `./output/training_plots/[INFO]/`
+Then the losses are averaged across the 5 folds. A log file and a plot with the results will be saved in `./output/training_plots/[INFO]/`.
+This procedure is only used to find suitable training meta-parameters. The default settings should work fine.
 
 
 ## 2 - FORWARD TEST SET
@@ -74,14 +73,14 @@ This will create a `test_forward.csv` file in `./output/forward/[INFO]/[LR]/`
 
 ## 3 - EVALUATION
 
-By default the argument `TOLERANCE` in `3_evaluation.sh` is set to 89 pixels, i.e. 2 degrees along the azimuth. Use 222 pixels to use 5 degrees.
-Set `PLOTBOOL=true` to plot the precision-recall curve.
+By default the argument `TOLERANCE` in `3_evaluation.sh` is set to 89 pixels, i.e. 2 degrees along the azimuth. Use 222 pixels for 5 degrees tolerance.
+You can set `PLOTBOOL=true` to plot the precision-recall curve.
 Run:
 	
 	./3_evaluation.sh
 
 This will print the average distance (aD), the detection error (det err), the average precision (AP), and the F1 score (F1). 
-A precision-recall "matrix" with the values of precision and recall achieved for each Sigmoid-sampled confidence point will be saved in a `precision_recall_[TOLERANCE]_sigmoid.csv` file.
+A precision-recall "matrix" with the values of precision and recall achieved for each Sigmoid-sampled confidence threshold will be saved in a `precision_recall_[TOLERANCE]_sigmoid.csv` file.
 
 (Optional) Uncommenting from line 170 to line 220 in `evaluation.py` will reproduce (and plot if `PLOTBOOL=true`) the results reported in the paper. 
 
