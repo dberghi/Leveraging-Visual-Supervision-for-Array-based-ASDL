@@ -26,7 +26,7 @@ Install dependencies by running `pip install -r utils/requirements.txt`. Or manu
 
 ## Get started
 
-Open `core/config.py` and edit 'project_path' (line 8) to point to your working directory, and 'h5py_path' to point where to want the audio features (~44GB) to be stored.
+Open `core/config.py` and edit 'project_path' (line 8) to point to your working directory, and 'h5py_path' to point where you want the audio features (~44GB) to be stored.
 Choose the desired supervisory condition (line 11). Default is 'GT_GT' (fully supervised).
 
 There are 4 bash files (`0_make_hdf5.sh`, `1_train.sh`, `2_forward.sh`, `3_evaluation.sh`). Each allows setting the input argument "INFO". Choose a consistent string argument across the 4 scripts. It is used in the naming convention of the outputs and can be useful to personalize your experiments.
