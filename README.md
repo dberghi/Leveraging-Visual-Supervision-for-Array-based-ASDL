@@ -44,7 +44,7 @@ Default feature is GCC-PHAT. To use SALSA-Lite:
 
 Create h5py dataset (~44GB) by running:
  
-	./0_make_h5py.sh
+	./0_make_hdf5.sh
 
 This will create the `development_dataset.h5` and `feature_scaler.h5` files and store them in `[h5py_path]/h5py_[INFO]/`
 
