@@ -1,7 +1,7 @@
 #!/bin/bash
 
 INFO='default'
-LR=0.00007
+LR=0.0001
 TOLERANCE=89 # use 89 pixels for 2deg tolerance or 222 pixels for 5 deg tolerance
 PLOTBOOL=false # set true to plot precision-recall curve
 
