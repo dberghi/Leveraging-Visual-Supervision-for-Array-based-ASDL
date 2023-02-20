@@ -6,7 +6,7 @@ This repo contains the code and models for the audio CRNN "student" network used
 
 - Download TragicTalkers from https://cvssp.org/data/TragicTalkers/ (username and password are required, check the license information on the website and contact d.berghi@surrey.ac.uk or davide.berghi@gmail.com to request the credentials)
 
-- Unzip the audio data in the `./data/TragicTalkers/` folder to get the following directory structure:
+- Unzip the audio data in the `data/TragicTalkers/` folder to get the following directory structure:
 <pre>
 	.
 	└── data
@@ -55,10 +55,10 @@ Start training by running:
 
 	./1_train.sh
 
-The model's weights will be saved in the checkpoint folder `./ckpt/[INFO]/[LR]/`.
+The model's weights will be saved in the checkpoint folder `ckpt/[INFO]/[LR]/`.
 By default the boolean argument `TRAINWITHFOLDS` in `1_train.sh` is set to false. This training uses the entire development set to train the CRNN. 
-Setting `TRAINWITHFOLDS=true` will start a 5-fold cross-validation training and save the training and validation loss vectors in `./output/training_plots/[INFO]/`
-Then the losses are averaged across the 5 folds. A log file and a plot with the results will be saved in `./output/training_plots/[INFO]/`.
+Setting `TRAINWITHFOLDS=true` will start a 5-fold cross-validation training and save the training and validation loss vectors in `output/training_plots/[INFO]/`
+Then the losses are averaged across the 5 folds. A log file and a plot with the results will be saved in `output/training_plots/[INFO]/`.
 This procedure is only used to find suitable training meta-parameters. The default settings should work fine.
 
 
@@ -68,7 +68,7 @@ Forward pass the test set using the trained model. Run:
 
 	./2_forward.sh
 
-This will create a `test_forward.csv` file in `./output/forward/[INFO]/[LR]/`
+This will create a `test_forward.csv` file in `output/forward/[INFO]/[LR]/`
 
 
 ## 3 - EVALUATION
@@ -87,12 +87,12 @@ A precision-recall "matrix" with the values of precision and recall achieved for
 
 ## (Optional) Make qualitative video demo
 
-The script `./utils/make_video.py` allows generating a video of one of the test sequences to qualitatively check your model's results. 
+The script `utils/make_video.py` allows generating a video of one of the test sequences to qualitatively check your model's results. 
 Modify the sequence name (line 11), 'info' (line 12), and learning rate 'lr' (line 13) as desired. The output will be an mp4 video of the selected sequence and camera view with a vertical line indicating the horizontal speaker position predicted by the model specified in 'info' and 'lr'.
 
-The script works if you have the video sequences of TragicTalkers in `./data/TragicTalkers/` 
+The script works if you have the video sequences of TragicTalkers in `data/TragicTalkers/` 
 
 
 ## Pretrained models
 
-In `/ckpt` are available the fully supervised (GT-GT) pretrained models with the GCC-PHAT input features and SALSA-Lite.
+In `ckpt/` are available the fully supervised (GT-GT) pretrained models with the GCC-PHAT input features and SALSA-Lite.
