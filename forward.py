@@ -45,7 +45,8 @@ def main():
 
     ## ---------- Load model weights -------------
     model = Net().to(device)
-    model.load_state_dict(torch.load(base_path+'ckpt/%s/%f/model_%03d.ckpt' %(args.info, lr, epoch)))
+    model.load_state_dict(torch.load(base_path + 'ckpt/%s/%f/model_%03d.ckpt' % (args.info, lr, epoch),
+                                     map_location=torch.device(device)))
 
 
     csv_out = Path(base_path + 'output/forward/%s/%f' % (args.info, lr))
