@@ -31,6 +31,8 @@ Choose the desired supervisory condition (line 11). Default is 'GT_GT' (fully su
 
 There are 4 bash files (`0_make_hdf5.sh`, `1_train.sh`, `2_forward.sh`, `3_evaluation.sh`). Each allows setting the input argument "INFO". Choose a consistent string argument across the 4 scripts. It is used for the naming convention of the outputs and can be useful to personalize your experiments.
 
+NOTE: You might need to make the bash files executable by running `chmod +x <file_name>.sh`
+
 
 ## 0 - EXTRACT INPUT FEATURES 
 
