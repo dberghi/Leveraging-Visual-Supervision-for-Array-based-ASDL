@@ -1,6 +1,6 @@
 # HORIZONTAL ACTIVE SPEAKER DETECTION AND LOCALIZATION ON THE TRAGIC TALKERS DATASET
 
-This repo contains the code and models for the audio CRNN "student" network used in the paper "Leveraging Visual Supervision for Array-based Active Speaker Detection and Localization" (Under review).
+This repo contains the code and the models for the audio CRNN "student" network used in the paper "Leveraging Visual Supervision for Array-based Active Speaker Detection and Localization" (Under review).
 
 ## Dataset
 
@@ -87,7 +87,7 @@ A precision-recall "matrix" with the values of precision and recall achieved for
 (Optional) Uncommenting from line 170 to line 220 in `evaluation.py` will reproduce (and plot if `PLOTBOOL=true`) the results reported in the paper. 
 
 
-## (Optional) Make qualitative video demo
+## (Optional) Make qualitative demo video
 
 The script `utils/make_video.py` allows generating a video of one of the test sequences to qualitatively check your model's results. 
 Modify the sequence name (line 11), 'info' (line 12), and learning rate 'lr' (line 13) as desired. The output will be an mp4 video of the selected sequence and camera view with a vertical line indicating the horizontal speaker position predicted by the model specified in 'info' and 'lr'.
