@@ -58,8 +58,8 @@ def main():
         writer = csv.writer(file_write)
         writer.writerow(['name', 'time', 'predicted x', 'confidence'])
         for count, image in enumerate(tqdm(dl_test)):
-            name = str(image[2])
-            name = name[2:-2]
+            name = image[2]
+            name = ''.join(name)
             #print(name)
             cam = image[1]
             initial_time = float(image[3])
