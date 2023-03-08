@@ -97,4 +97,4 @@ The script works if you have the video sequences of TragicTalkers in `data/Tragi
 
 ## Pretrained models
 
-In `ckpt/` are available the fully supervised (GT-GT) pretrained models with the GCC-PHAT input features and SALSA-Lite.
+The fully supervised (GT-GT) pretrained models with the GCC-PHAT input features and SALSA-Lite are available in `ckpt/`.
