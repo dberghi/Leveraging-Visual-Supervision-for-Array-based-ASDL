@@ -9,6 +9,7 @@ input = {
     'h5py_path': '/home/davide/PycharmProjects/ASDL-CRNN/data/', # might want to save h5py (and scaler) somewhere else.
     # choose from: 'GT_GT', 'GT_VAD', 'ASC_GT', 'ASC_VAD', 'ASC(s)_GT', 'ASC(s)_VAD', 'TalkNet_GT', 'TalkNet_VAD'
     'supervisory_condition': 'GT_GT',
+    'features': 'GCC-PHAT', # or 'SALSA-Lite' or 'Log-mel'
     'fps': 30,
     'sr': 48000, # 48 kHz
     'frame_len_sec': 2, # seconds
