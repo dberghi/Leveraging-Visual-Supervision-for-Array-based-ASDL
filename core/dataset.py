@@ -53,40 +53,42 @@ def generate_audio_tensor(audio, sr):
     fmax = conf.spectrog_param['fmax']
 
     ## ----------- LOG MEL SPECTROGRAMS TENSOR -------------
-    '''
-    # This generates a stack of log mel spectrograms
-    tensor = [] # log mel tensor
-    channel_num = audio.shape[1]
-    for idx in range(channel_num):
-        logmel_sp = utils.generate_mel_spectrograms(audio[:, idx], sr, winlen, hoplen, numcep, n_fft, fmin, fmax)
-        tensor.append(logmel_sp)
-    tensor = np.concatenate(tensor, axis=0) # (n_channels, timebins, freqbins)
-    '''
+    if conf.input['features'] == 'Log-mel':
+        # This generates a stack of log mel spectrograms
+        tensor = [] # log mel tensor
+        channel_num = audio.shape[1]
+        for idx in range(channel_num):
+            logmel_sp = utils.generate_mel_spectrograms(audio[:, idx], sr, winlen, hoplen, numcep, n_fft, fmin, fmax)
+            tensor.append(logmel_sp)
+        tensor = np.concatenate(tensor, axis=0) # (n_channels, timebins, freqbins)
+
     ## ----------- GCC SPECTROGRAMS TENSOR -------------
+    elif conf.input['features'] == 'GCC-PHAT':
+        tensor = [] # gcc_tensor
+        channel_num = audio.shape[1]
+        # ---> use all possible microphone pairs
+        #for n in range(channel_num):
+        #    for m in range(n + 1, channel_num):
+        #        tensor.append(utils.generate_gcc_spectrograms(audio[:,m], audio[:,n], winlen, hoplen, numcep, n_fft))
 
-    tensor = [] # gcc_tensor
-    channel_num = audio.shape[1]
+        # ---> use reference mic (default 0, i.e. first mic)
+        ref_mic_id = 0 #np.int(np.floor(channel_num/2))
+        for n in range(channel_num):
+            if not n == ref_mic_id:
+                tensor.append(utils.generate_gcc_spectrograms(audio[:, n], audio[:, ref_mic_id], winlen, hoplen, numcep, n_fft))
 
-    # ---> use all possible microphone pairs
-    #for n in range(channel_num):
-    #    for m in range(n + 1, channel_num):
-    #        tensor.append(utils.generate_gcc_spectrograms(audio[:,m], audio[:,n], winlen, hoplen, numcep, n_fft))
-    
-    # ---> use reference mic (default 0, i.e. first mic)
-    ref_mic_id = 0 #np.int(np.floor(channel_num/2))
-    for n in range(channel_num):
-        if not n == ref_mic_id:
-            tensor.append(utils.generate_gcc_spectrograms(audio[:, n], audio[:, ref_mic_id], winlen, hoplen, numcep, n_fft))
-    
-    ## ---------- ADD mono log mel spect (1st channel only) ------------------------
-    logmel = utils.generate_mel_spectrograms(audio[:, 0], sr, winlen, hoplen, numcep, n_fft, fmin, fmax)
-    tensor.append(logmel)
-    
-    tensor = np.concatenate(tensor, axis=0) # (n_channels, timebins, freqbins)
+        ## ---------- ADD mono log mel spect (1st channel only) ------------------------
+        logmel = utils.generate_mel_spectrograms(audio[:, 0], sr, winlen, hoplen, numcep, n_fft, fmin, fmax)
+        tensor.append(logmel)
+
+        tensor = np.concatenate(tensor, axis=0) # (n_channels, timebins, freqbins)
 
     ## -------------- SALSA FEATURE EXTRACTION --------------
+    elif conf.input['features'] == 'SALSA-Lite':
+        tensor = salsa_extraction.extract_features(audio, conf=conf, ref_mic=1) # salsa-lite
 
-    #tensor = salsa_extraction.extract_features(audio, conf=conf, ref_mic=1) # salsa-lite
+    else:
+        raise ValueError("""Input feature non supported: is '%s' a typo?""" %conf.input['features'])
 
     return tensor
 
