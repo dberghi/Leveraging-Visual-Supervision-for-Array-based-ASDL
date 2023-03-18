@@ -242,7 +242,7 @@ def main():
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Test set forward pass, specify arguments')
+    parser = argparse.ArgumentParser(description='Specify arguments for evaluation')
     parser.add_argument('--lr', type=float, default=0.0005, metavar='LR',
                         help='learning rate (default: %f)' % conf.training_param['learning_rate'])
     parser.add_argument('--info', type=str, default='default', metavar='S',
