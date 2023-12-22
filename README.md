@@ -1,6 +1,6 @@
 # HORIZONTAL ACTIVE SPEAKER DETECTION AND LOCALIZATION ON THE TRAGIC TALKERS DATASET
 
-This repo contains the code and the models for the audio CRNN "student" network used in the paper "Leveraging Visual Supervision for Array-based Active Speaker Detection and Localization" (Under review).
+This repo contains the code and the models for the audio CRNN "student" network used in the paper "Leveraging Visual Supervision for Array-based Active Speaker Detection and Localization".
 
 ## Dataset
 
