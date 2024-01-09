@@ -1,7 +1,7 @@
 # HORIZONTAL ACTIVE SPEAKER DETECTION AND LOCALIZATION ON THE TRAGIC TALKERS DATASET
 
-This repo contains the code and the models for the audio CRNN "student" network used in the paper "Leveraging Visual Supervision for Array-based Active Speaker Detection and Localization".
-
+This repo contains the code and the models for the audio CRNN "student" network used in the TASLP paper:
+> D. Berghi and P. J. B. Jackson, "Leveraging Visual Supervision for Array-Based Active Speaker Detection and Localization," in IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 32, pp. 984-995, 2024. [[**arXiv**]](https://arxiv.org/abs/2312.14021) [[**IEEE Xplore**]](https://ieeexplore.ieee.org/abstract/document/10373068)
 ## Dataset
 
 - Download TragicTalkers from https://cvssp.org/data/TragicTalkers/ (username and password are required, check the license information on the website and contact d.berghi@surrey.ac.uk or davide.berghi@gmail.com to request the credentials)
@@ -98,3 +98,20 @@ The script works if you have the video sequences of TragicTalkers in `data/Tragi
 ## Pretrained models
 
 The fully supervised (GT-GT) pretrained models with the GCC-PHAT input features and SALSA-Lite are available in `ckpt/`.
+
+
+## Citation
+Please consider citing our paper if you find this code useful, many thanks!
+
+```
+@ARTICLE{Berghi:2024:LeveragingASDL,
+  author={Berghi, Davide and Jackson, Philip J.B.},
+  journal={IEEE/ACM Transactions on Audio, Speech, and Language Processing}, 
+  title={Leveraging Visual Supervision for Array-Based Active Speaker Detection and Localization}, 
+  year={2024},
+  volume={32},
+  number={},
+  pages={984-995},
+  doi={10.1109/TASLP.2023.3346643}
+}
+```
