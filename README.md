@@ -4,7 +4,7 @@ This repo contains the code and the models for the audio CRNN "student" network 
 > D. Berghi and P. J. B. Jackson, "Leveraging Visual Supervision for Array-Based Active Speaker Detection and Localization," in IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 32, pp. 984-995, 2024. [[**arXiv**]](https://arxiv.org/abs/2312.14021) [[**IEEE Xplore**]](https://ieeexplore.ieee.org/abstract/document/10373068)
 ## Dataset
 
-- Download TragicTalkers from https://cvssp.org/data/TragicTalkers/ (username and password are required, check the license information on the website and contact d.berghi@surrey.ac.uk or davide.berghi@gmail.com to request the credentials)
+- Download TragicTalkers from https://cvssp.org/data/TragicTalkers/ (username and password are required, check the license information on the website and contact davide.berghi@surrey.ac.uk or davide.berghi@gmail.com to request the credentials)
 
 - Unzip the audio data in the `data/TragicTalkers/` folder to get the following directory structure:
 <pre>
